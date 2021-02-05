@@ -3,6 +3,43 @@ import {getAllPhotoByName} from '../services/service'
 
 import { Images } from './Images'
 
+import styled from 'styled-components'
+
+const Header = styled.header `
+  max-width: 70rem;
+  margin: 2rem auto;
+  text-align: center;
+`;
+
+const H1 = styled.h1 `
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 1em;
+`;
+
+const Input = styled.input`
+  height: 2.5rem;
+  width: 20rem;
+  margin-top: 1em;
+  outline: none;
+  text-indent: 1em;
+  font-size: 1em;
+
+  ::placeholder {
+    font-size: .8em;
+  }
+`;
+
+const Button = styled.button`
+  height: 2.5rem;
+  padding: 0 1em;
+  outline: none;
+  cursor: pointer;
+  background: #222;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+`;
+
 export const Search = () => {
 
     const [searchPhotos, setSearchPhotos] = useState('')
@@ -17,50 +54,42 @@ export const Search = () => {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        console.log('serchFoto:', searchPhotos)
-
+       
         const setPhotos = async () =>{
 
             const getPhotos = await getAllPhotoByName(searchPhotos)
-            console.log('getPhotos', getPhotos)
             setResultFotos(getPhotos)
         }
         setPhotos()
         formRef.current.reset();
     }
-    console.log('result', getResultFotos)
 
     return (
-        <div>
-            {/* Search input:
-            <br/> */}
+        <Header>
+
+            {/* Search input: */}
+            
+            <H1>Unsplash</H1>
+                <p>The internet’s source of freely usable images.</p>
+                <p>Powered by creators everywhere.</p>
+
             <form onSubmit = {handleSubmit} ref = {formRef} >
-                <input 
+                <Input 
                     name = 'photo'
                     onChange = {handleChange}
+                    placeholder = 'Search ...'
                 />
 
-                <button 
+                <Button 
                     type='submit' 
                 >
-                    search
-                </button>
+                    Search
+                </Button>
             
             </form>           
             
-{/*             
-               {
-                   getResultFotos.map(picture =>
-                   <img 
-                        src = {picture.urls.small}
-                        alt = {picture.alt_description}
-                        key = {picture.id}
-                    />)
-               } */}
-                
-                <Images getResultFotos={getResultFotos} searchPhotos={searchPhotos}/>
+            <Images getResultFotos={getResultFotos} searchPhotos={searchPhotos}/>
             
-
-        </div>
+        </Header>
     )
 }

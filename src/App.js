@@ -1,18 +1,31 @@
-import './App.css';
-
 import {Search} from './components/Search'
-// import {Autocomplet} from './components/Autocomplet'
-// import {Images} from './components/Images'
+
+import { createGlobalStyle } from 'styled-components';
+
+// Style
+const GlobalStyle = createGlobalStyle `
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: sans-serif;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-       
-        Image finder:
-        <Search />
-        {/* <Autocomplet />
-        <Images /> */}
-
+    <div>
+        <GlobalStyle />  
+          <Search />
     </div>
   );
 }

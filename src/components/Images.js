@@ -1,27 +1,43 @@
 import React from 'react'
 import { ModalWindow } from './ModalWindow';
 
-export const Images = ({getResultFotos, searchPhotos}) => {
+import styled from 'styled-components'
 
+const Img = styled.img `
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const WrapperImages = styled.section `
+    max-width: 70rem;
+    margin: 4rem auto;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 300px;
+ `;
+
+export const Images = ({getResultFotos, searchPhotos}) => {
 
     return (
         <div>
-            {/* images */}
+            <br />
             {searchPhotos}
-            <br />
-            <br />
 
-                <div style = {{width: '75vw',height: '100vh', display: 'flex', flexDirection: 'column'}}>
-                    {   getResultFotos.map(picture =>
-                            <img 
+            {/* images */}
+                <>
+                    <WrapperImages >
+                        {getResultFotos.map(picture =>
+                            <Img 
                                 src = {picture.urls.small}
                                 alt = {picture.alt_description}
                                 key = {picture.id}
-                               
-                            />)
-                    }
-                 </div>
-                    
+                                    
+                                />
+                            )}
+                    </WrapperImages>
+                 </> 
         </div>
     )
 }
