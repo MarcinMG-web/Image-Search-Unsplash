@@ -19,14 +19,27 @@ const WrapperImages = styled.section `
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows:300px;
 
- `;
+`;
 
-export const Images = ({getResultFotos, searchPhotos}) => {
+const SearchPhotos = styled.div `
+   font-family: sans-serif;
+   font-size: 35px;
+   color: white;
+   display: flex;
+   flex-direction:row;
+
+`;
+
+export const Images = ({
+        getResultFotos,
+        searchPhotos,
+        displaySearchPhotos
+    }) => {
 
     return (
         <div>
             <br />
-            {searchPhotos}
+            { displaySearchPhotos && <SearchPhotos> {searchPhotos} </SearchPhotos> }
 
             {/* images */}
                 <>

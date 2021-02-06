@@ -47,6 +47,7 @@ export const Search = () => {
     const [getResultFotos, setResultFotos] = useState([])
     const [page, setPage] = useState(0)
 
+    const [displaySearchPhotos, setDisplaySearchPhotos] = useState(false)
 
     const handleChange = (e) => {
         setSearchPhotos(e.target.value)
@@ -69,7 +70,11 @@ export const Search = () => {
         e.preventDefault();
         const clearArrResultFotos = getResultFotos.splice(0, getResultFotos.length)
         setResultFotos(clearArrResultFotos, setPhotos())
+        
+        if (displaySearchPhotos === false){
 
+            setDisplaySearchPhotos(!displaySearchPhotos)
+        }
     }
 
     return (
@@ -102,7 +107,8 @@ export const Search = () => {
                 next={setPhotos}
                 hasMore={true}
                 >
-                    <Images getResultFotos={getResultFotos} searchPhotos={searchPhotos}/>
+                    <Images getResultFotos={getResultFotos} searchPhotos={searchPhotos}
+                    displaySearchPhotos = {displaySearchPhotos}/ >
                     
             </InfiniteScroll>
         </Header>
