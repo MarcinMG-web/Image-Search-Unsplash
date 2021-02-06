@@ -6,12 +6,10 @@ const api = axios.create({
     baseURL: `https://api.unsplash.com/`,
 })
 
-//https://api.unsplash.com/search/photos?query=office&client_id=YOUR_ACCESS_KEY
 
-
-export const getAllPhotoByName = async (fromInput) => {
+export const getAllPhotoByName = async (page,fromInput) => {
     try {
-        return await api.get(`/search/photos?query=${fromInput}&client_id=${apiKey}`)
+         return await api.get(`/search/photos?page=${page}&query=${fromInput}&client_id=${apiKey}`)
             .then(({
                 data
             }) => data.results);
@@ -20,3 +18,4 @@ export const getAllPhotoByName = async (fromInput) => {
         console.log(err)
     }
 }
+

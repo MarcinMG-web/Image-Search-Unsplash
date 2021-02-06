@@ -7,6 +7,7 @@ const Img = styled.img `
   width: 100%;
   height: 100%;
   object-fit: cover;
+
 `;
 
 const WrapperImages = styled.section `
@@ -14,8 +15,10 @@ const WrapperImages = styled.section `
     margin: 4rem auto;
     display: grid;
     grid-gap: 1em;
+    grid-template-columns: repeat(3, 1fr); 
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows: 300px;
+    grid-auto-rows:300px;
+
  `;
 
 export const Images = ({getResultFotos, searchPhotos}) => {

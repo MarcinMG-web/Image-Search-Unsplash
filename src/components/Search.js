@@ -1,6 +1,7 @@
-import React,  { useState, useRef } from 'react';
-import {getAllPhotoByName} from '../services/service'
+import React,  { useState, useEffect } from 'react';
+import { getAllPhotoByName } from '../services/service'
 
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { Images } from './Images'
 
 import styled from 'styled-components'
@@ -18,7 +19,7 @@ const H1 = styled.h1 `
 
 const Input = styled.input`
   height: 2.5rem;
-  width: 20rem;
+  width: 50rem;
   margin-top: 1em;
   outline: none;
   text-indent: 1em;
@@ -44,24 +45,31 @@ export const Search = () => {
 
     const [searchPhotos, setSearchPhotos] = useState('')
     const [getResultFotos, setResultFotos] = useState([])
+    const [page, setPage] = useState(0)
 
-    const formRef = useRef();
 
     const handleChange = (e) => {
         setSearchPhotos(e.target.value)
     }
 
+    useEffect(() => {
+        setPhotos();
+    }, [])
+
+    const setPhotos = async () => {
+
+        const getPhotos = await getAllPhotoByName(page,searchPhotos)
+        setResultFotos([...getResultFotos, ...getPhotos])
+        setPage(page + 1);
+
+    }
+
     const handleSubmit = (e) => {
 
         e.preventDefault();
-       
-        const setPhotos = async () =>{
+        const clearArrResultFotos = getResultFotos.splice(0, getResultFotos.length)
+        setResultFotos(clearArrResultFotos, setPhotos())
 
-            const getPhotos = await getAllPhotoByName(searchPhotos)
-            setResultFotos(getPhotos)
-        }
-        setPhotos()
-        formRef.current.reset();
     }
 
     return (
@@ -73,7 +81,8 @@ export const Search = () => {
                 <p>The internet’s source of freely usable images.</p>
                 <p>Powered by creators everywhere.</p>
 
-            <form onSubmit = {handleSubmit} ref = {formRef} >
+
+            <form onSubmit = {handleSubmit}  >
                 <Input 
                     name = 'photo'
                     onChange = {handleChange}
@@ -88,8 +97,14 @@ export const Search = () => {
             
             </form>           
             
-            <Images getResultFotos={getResultFotos} searchPhotos={searchPhotos}/>
-            
+            <InfiniteScroll
+                dataLength = {getResultFotos.length}
+                next={setPhotos}
+                hasMore={true}
+                >
+                    <Images getResultFotos={getResultFotos} searchPhotos={searchPhotos}/>
+                    
+            </InfiniteScroll>
         </Header>
     )
 }
