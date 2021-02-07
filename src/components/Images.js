@@ -4,19 +4,34 @@ import { ModalWindow } from './ModalWindow';
 import styled from 'styled-components'
 
 const Img = styled.img `
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    margin-bottom: 1rem;
+    display: flex;
+    flex: 100%;
+    margin-top: 1rem;
+    width: 100%;
+    height: 100%;
 `;
 
 const WrapperImages = styled.section `
-    max-width: 70rem;
-    margin: 4rem auto;
-    display: grid;
-    grid-gap: 1em;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows:300px;
+ column-count: 3;
+
+ @media (min-width: 768px) {
+  .form {
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 1rem;
+    align-items: center;
+  }
+  .input {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+    .card-list {
+        column-count: 1;
+    }
+}
+
 `;
 
 const SearchPhotos = styled.div `
@@ -45,7 +60,9 @@ export const Images = ({
                     <WrapperImages >
                         {getResultFotos.map(picture =>
                             <Img 
-                                src = {picture.urls.small}
+                                src = {
+                                    picture.urls.small
+                                }
                                 alt = {picture.alt_description}
                                 key = {picture.id}
                                     
