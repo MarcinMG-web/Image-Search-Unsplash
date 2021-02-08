@@ -1,5 +1,7 @@
 import React from 'react'
-import { ModalWindow } from './ModalWindow';
+
+import SimpleReactLightbox from 'simple-react-lightbox'
+import { SRLWrapper } from "simple-react-lightbox";
 
 import styled from 'styled-components'
 
@@ -10,6 +12,7 @@ const Img = styled.img `
     margin-top: 1rem;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 `;
 
 const WrapperImages = styled.section `
@@ -49,27 +52,28 @@ export const Images = ({
         displaySearchPhotos
     }) => {
 
-        // console.log('searchPhotos', searchPhotos)
     return (
         <div>
            
             { displaySearchPhotos && <SearchPhotos> {searchPhotos} </SearchPhotos> }
 
             {/* images */}
-                <>
-                    <WrapperImages >
-                        {getResultFotos.map(picture =>
-                            <Img 
-                                src = {
-                                    picture.urls.small
-                                }
-                                alt = {picture.alt_description}
-                                key = {picture.id}
-                                    
-                                />
-                            )}
-                    </WrapperImages>
-                 </> 
+                
+            <WrapperImages >
+                <SimpleReactLightbox>
+                        <SRLWrapper>
+                            {getResultFotos.map(picture =>
+                                <Img 
+                                    src = {picture.urls.small}
+                                    alt = {
+                                            `User name: ${picture.user.name}
+                                            Location: ${picture.user.location}`
+                                            }
+                                            key = {picture.id}
+                                    />)}
+                        </SRLWrapper>      
+                </SimpleReactLightbox>
+            </WrapperImages>
         </div>
     )
 }

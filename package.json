@@ -11,6 +11,7 @@
     "react-dom": "^17.0.1",
     "react-infinite-scroll-component": "^6.0.0",
     "react-scripts": "4.0.2",
+    "simple-react-lightbox": "^3.6.3",
     "styled-components": "^5.2.1",
     "web-vitals": "^1.1.0"
   },

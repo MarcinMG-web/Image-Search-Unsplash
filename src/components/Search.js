@@ -72,6 +72,7 @@ export const Search = () => {
 
     const wrapperRef = useRef(null);
     const [items] = useState([...words])
+  
     const [suggestions, setSuggestions] = useState([])
     const [displaySugestion, setDisplaySugestion] = useState(false)
 
@@ -111,13 +112,10 @@ export const Search = () => {
           
           setSuggestions(items.sort().filter(v => regex.test(v)))
           setDisplaySugestion(true)
-          // console.log('tu', suggestions)
         } 
 
-       
       }
-      // console.log('items',items)
-      // console.log('suges', suggestions)
+
 
     const renderSuggestion = () => {
       if (suggestions.length === 0) {
@@ -132,12 +130,12 @@ export const Search = () => {
                 <Ul>
                 {
                     suggestions.map(item => <Li 
-                      key = {item + 1}
-                      onClick = {
-                          () => sugestionSelected(item)
-                        }
-                        >{item}</Li>)
-                      }
+                                              key = {item + 1}
+                                              onClick = {
+                                                  () => sugestionSelected(item)
+                                                }
+                                                >{item}</Li>)
+                }
                 </Ul>
                
               )
@@ -192,7 +190,7 @@ export const Search = () => {
                     Search
                 </Button>
 
-              {renderSuggestion()}
+              {/* {renderSuggestion()} */}
                
            
             </form>           
