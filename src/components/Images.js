@@ -56,8 +56,6 @@ export const Images = ({
         <div>
            
             { displaySearchPhotos && <SearchPhotos> {searchPhotos} </SearchPhotos> }
-
-            {/* images */}
                 
             <WrapperImages >
                 <SimpleReactLightbox>

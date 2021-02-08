@@ -129,12 +129,13 @@ export const Search = () => {
         displaySugestion &&
                 <Ul>
                 {
-                    suggestions.map(item => <Li 
-                                              key = {item + 1}
-                                              onClick = {
-                                                  () => sugestionSelected(item)
-                                                }
-                                                >{item}</Li>)
+                    suggestions.map(item => 
+                    <Li 
+                      key = {item + 1}
+                      onClick = {
+                            () => sugestionSelected(item)
+                      }
+                    >{item}</Li>)
                 }
                 </Ul>
                
@@ -168,9 +169,7 @@ export const Search = () => {
 
     return (
         <Header>
-
-            {/* Search input: */}
-            
+                       
             <H1>Unsplash</H1>
                 <p>The internet’s source of freely usable images.</p>
                 <p>Powered by creators everywhere.</p>
@@ -190,7 +189,7 @@ export const Search = () => {
                     Search
                 </Button>
 
-              {/* {renderSuggestion()} */}
+              {renderSuggestion()}
                
            
             </form>           
@@ -199,9 +198,13 @@ export const Search = () => {
                 dataLength = {getResultFotos.length}
                 next={setPhotos}
                 hasMore={true}
-                >
+                endMessage={
+                      <p style={{ textAlign: 'center' }}>
+                        <b>Yay! You have seen it all</b>
+                      </p>
+  }               >
                     <Images getResultFotos={getResultFotos} searchPhotos={searchPhotos}
-                    displaySearchPhotos = {displaySearchPhotos}/ >
+                    displaySearchPhotos = {displaySearchPhotos}/>
                     
             </InfiniteScroll>
         </Header>
