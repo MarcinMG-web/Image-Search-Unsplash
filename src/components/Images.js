@@ -34,7 +34,6 @@ const WrapperImages = styled.section `
         column-count: 1;
     }
 }
-
 `;
 
 const SearchPhotos = styled.div `
@@ -43,7 +42,6 @@ const SearchPhotos = styled.div `
    color: white;
    display: flex;
    flex-direction:row;
-
 `;
 
 export const Images = ({

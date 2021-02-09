@@ -1,10 +1,6 @@
 export default `
 abandon
 ability
-able
-abortion
-about
-above
 abroad
 absence
 absolute
@@ -20,10 +16,7 @@ accomplish
 according
 account
 accurate
-accuse
 achieve
-achievement
-acid
 acknowledge
 acquire
 across
@@ -46,7 +39,6 @@ adequate
 adjust
 adjustment
 administration
-administrator
 admire
 admission
 admit
@@ -684,6 +676,7 @@ day
 dead
 deal
 dealer
+duck
 dear
 death
 debate
@@ -800,7 +793,7 @@ division
 divorce
 DNA
 do
-    doctor
+doctor
 document
 dog
 domestic
@@ -875,7 +868,7 @@ elementary
 eliminate
 elite
 else
-    elsewhere
+elsewhere
 e - mail
 embrace
 emerge
@@ -1130,7 +1123,6 @@ fuel
 full
 fully
 fun
-
 function
 fund
 fundamental
@@ -1345,8 +1337,8 @@ impression
 impressive
 improve
 improvement
-    in
-    incentive
+in
+incentive
 incident
 include
 including
@@ -1526,7 +1518,7 @@ length
 less
 lesson
 let
-    letter
+letter
 level
 liberal
 library
@@ -1560,7 +1552,7 @@ locate
 location
 lock
 long
-long - term
+long-term
 look
 loose
 lose
@@ -1669,7 +1661,7 @@ mission
 mistake
 mix
 mixture
-mm - hmm
+mm-hmm
 mode
 model
 moderate
@@ -1776,7 +1768,7 @@ notion
 novel
 now
 nowhere
-n 't
+n't
 nuclear
 number
 numerous
@@ -1799,8 +1791,8 @@ occur
 ocean
 odd
 odds
-    of
-    off
+of
+off
 offense
 offensive
 offer

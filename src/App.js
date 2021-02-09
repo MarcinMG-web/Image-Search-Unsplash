@@ -2,7 +2,6 @@ import {Search} from './components/Search'
 
 import { createGlobalStyle } from 'styled-components';
 
-// Style
 const GlobalStyle = createGlobalStyle `
   * {
     margin: 0;

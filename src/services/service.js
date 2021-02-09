@@ -18,4 +18,3 @@ export const getAllPhotoByName = async (page,fromInput) => {
         console.log(err)
     }
 }
-

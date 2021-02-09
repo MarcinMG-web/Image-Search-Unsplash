@@ -4,7 +4,7 @@ import { getAllPhotoByName } from '../services/service'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Images } from './Images'
 
-import words from './words'
+import words from '../words/words'
 import styled from 'styled-components'
 
 const Header = styled.header `
@@ -26,7 +26,6 @@ const Input = styled.input`
   text-indent: 1em;
   font-size: 1em;
   box-sizing: border-box;
-
   ::placeholder {
     font-size: .8em;
   }
@@ -85,6 +84,7 @@ export const Search = () => {
         const getPhotos = await getAllPhotoByName(page,searchPhotos)
         setResultFotos([...getResultFotos, ...getPhotos])
         setPage(page + 1);
+     
       }
 
       useEffect(() => {
@@ -121,7 +121,7 @@ export const Search = () => {
       if (suggestions.length === 0) {
         return displaySugestion && 
               <Ul>
-                   <Li>Brak</Li>
+                   <Li>No Option!</Li>
               </Ul>
       }
       
@@ -146,7 +146,7 @@ export const Search = () => {
       setSearchPhotos(sugestion)
 
       const clearArrResultFotos = getResultFotos.splice(0, getResultFotos.length)
-      setResultFotos(clearArrResultFotos, setPhotos())
+      setResultFotos(clearArrResultFotos, setPhotos(sugestion))
 
       setSuggestions([])
       setDisplaySugestion(false)
@@ -154,8 +154,8 @@ export const Search = () => {
   }
 
   const handleSubmit = (e) => {
+        e.preventDefault()
 
-        e.preventDefault();
         const clearArrResultFotos = getResultFotos.splice(0, getResultFotos.length)
         setResultFotos(clearArrResultFotos, setPhotos())
         
